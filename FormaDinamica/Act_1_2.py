@@ -25,14 +25,18 @@ for i in range(1, vuelto + 1):
         else:
             break
 cambioMonedas = {}
-for coin in denominaciones:
-    cambioMonedas[coin] = 0
+for monedas in denominaciones:
+    cambioMonedas[monedas] = 0
+   
 
 temp = vuelto
 while temp > 0:
-    coin = monedasUsadas[temp]
-    cambioMonedas[coin] += 1
-    temp -= coin
+    monedas = monedasUsadas[temp]
+    if monedas == -1:
+        print("¿Será que le pueda pagar con dulces de a peso? (No hay vuelto suficiente en la caja)")
+        break
+    cambioMonedas[monedas] += 1
+    temp -= monedas
 
 for coin in sorted(denominaciones, reverse=True):
     print(str(cambioMonedas[coin]) + " monedas de " + str(coin)) 
